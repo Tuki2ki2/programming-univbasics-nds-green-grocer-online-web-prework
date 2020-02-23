@@ -1,9 +1,18 @@
 require 'pry'
 def find_item_by_name_in_collection(name, collection)
   # Implement me first!
-  binding.pry
-  #
   # Consult README for inputs and outputs
+  a = 0
+  while a < collection.length
+    item = collection[a][:item]
+      if item == name
+      return item
+      elsif
+      a+=1
+      else
+      return nil
+      end
+  end
 end
 
 def consolidate_cart(cart)
