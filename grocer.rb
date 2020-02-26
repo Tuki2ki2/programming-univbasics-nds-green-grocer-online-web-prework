@@ -1,21 +1,35 @@
 require 'pry'
 def find_item_by_name_in_collection(name, collection)
-  # Implement me first!
-  # Consult README for inputs and outputs
-  a = 0
-  while a < collection.length
-    item = collection[a][:item]
-      if item == name
-      return item
-      elsif
-      a+=1
-      else
-      return nil
-      end
+  counter = 0
+  while counter < collection.length
+      if collection[counter][:item] == name
+        return collection[counter]
+        end
+      counter+=1
+    end
+    nil
   end
-end
 
 def consolidate_cart(cart)
+  a = 0
+  array = []
+  while a < cart.length do
+    item = find_item_by_name_in_collection(cart[a][:item],array)
+    if item != nil
+      item[:count] +=1
+    else
+      item= {
+        :item => item[a][:item],
+        :price => item[a][:price],
+        :clearance => item[a][:clearance],
+        :count => 1
+      }
+      array<< item
+    end
+    a+=1
+
+  end
+  array
   # Consult README for inputs and outputs
   #
   # REMEMBER: This returns a new Array that represents the cart. Don't merely
