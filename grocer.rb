@@ -11,32 +11,33 @@ def find_item_by_name_in_collection(name, collection)
   end
 
 def consolidate_cart(cart)
-  a = 0
-  array = []
-  while a < cart.length do
-    item = find_item_by_name_in_collection(cart[a][:item],array)
-    if item != nil
-      item[:count] +=1
-    else
-      item= {
-        :item => item[a][:item],
-        :price => item[a][:price],
-        :clearance => item[a][:clearance],
+  counter = 0
+  new_cart = []
+  while counter < cart.length
+    new_item = find_item_by_name_in_collection(cart[counter][:item], new_cart)
+    if new_item != nil
+      new_item[:count] +=1
+      else
+      new_item = {
+        :item => cart[counter][:item],
+        :price => cart[counter][:price],
+        :clearance => cart[counter][:clearance],
         :count => 1
       }
-      array<< item
+      new_cart << new_item
     end
-    a+=1
-
-  end
-  array
+    counter +=1
+    end
+    new_cart
+end
   # Consult README for inputs and outputs
   #
   # REMEMBER: This returns a new Array that represents the cart. Don't merely
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
-end
+
 
 def apply_coupons(cart, coupons)
+  binding.pry
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
